@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace SingleResponsibilityPrinciple
 {
-    class Program
+        class Program
     {
         static void Main(string[] args)
         {
-            var tradeStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SingleResponsibilityPrinciple.trades.txt");
-
+            var tradeStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Unit8_SRP_F24.trades.txt");
             var tradeProcessor = new TradeProcessor();
             tradeProcessor.ProcessTrades(tradeStream);
 
