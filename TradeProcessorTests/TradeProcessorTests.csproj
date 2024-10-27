@@ -20,6 +20,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Unit8_SRP_F24\Unit8_SRP_F24.csproj" />
+    <EmbeddedResource Include="goodtrades.txt" />
+    <EmbeddedResource Include="zerotrades.txt" />
+    <EmbeddedResource Include="tentrades.txt" />
+    <EmbeddedResource Include="negativetradeamount.txt" />
+    <EmbeddedResource Include="badtrades.txt" />
   </ItemGroup>
 
   <ItemGroup>
