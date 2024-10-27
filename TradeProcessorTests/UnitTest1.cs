@@ -50,8 +50,7 @@ namespace TradeProcessorTests
             int countBefore = CountDbRecords();
             tradeProcessor.ProcessTrades(tradeStream);
             //Assert
-            int countAfter = CountDbRecords();
-            Assert.Equal(countBefore + 4, countAfter);
+            Assert.Equal(countBefore + 4, CountDbRecords());
         }
 
         [Fact]

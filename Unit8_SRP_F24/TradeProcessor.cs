@@ -54,6 +54,11 @@ namespace SingleResponsibilityPrinciple
                 return false;
             }
 
+            if(tradeAmount < 0) {
+                LogMessage("WARN: Trade amount on line {0} is negative: '{1}'", currentLine, fields[1]);
+                return false;
+            }
+
             decimal tradePrice;
             if (!decimal.TryParse(fields[2], out tradePrice))
             {
@@ -93,6 +98,7 @@ namespace SingleResponsibilityPrinciple
         {
             List<TradeRecord> trades = new List<TradeRecord>();
 
+
             var lineCount = 1;
             foreach (var line in lines)
             {
@@ -100,13 +106,21 @@ namespace SingleResponsibilityPrinciple
 
                 if (ValidateTradeData(fields, lineCount) == false)
                 {
+                    if (fields.Length != 3) {
+                        LogMessage("ERROR: File is bad. No trades will be processed.");
+                        return new List<TradeRecord>();
+                    }
                     continue;
                 }
 
                 TradeRecord trade = MapTradeDataToTradeRecord(fields);
-                trades.Add(trade);
+
+                if (trade.Lots > 0) {
+                    trades.Add(trade);
+                }
 
                 lineCount++;
+
             }
             return trades;
         }
